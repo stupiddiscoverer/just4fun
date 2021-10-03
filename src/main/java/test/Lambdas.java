@@ -1,7 +1,7 @@
 package test;
 
 import sortUtil.Sort;
-import tools.ParaSort;
+import sortUtil.ParaSort;
 
 import java.util.*;
 import java.util.stream.Collectors;
