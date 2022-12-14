@@ -4,6 +4,9 @@ import utils.FileUtil;
 import java.io.*;
 import java.util.LinkedList;
 
+import static utils.FileUtil.readBytesFromFile;
+import static utils.FileUtil.writeStrToFile;
+
 public class ReplaceText {
     public static void main(String[] args) {
         if (args.length < 3) {
@@ -72,52 +75,5 @@ public class ReplaceText {
         return content;
     }
 
-    public static byte[] readBytesFromFile(String path) {
-        try {
-            File file =new File(path);
-            if(!file.exists()) {
-                System.out.println("文件不存在！！！");
-                return null;
-            }
-            int length = (int)file.length();
-            byte[] array = new byte[length];
-            FileInputStream fileInputStream = new FileInputStream(path);
-            fileInputStream.read(array);
-            return array;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 
-    public static void writeBytesFromFile(String path, byte[] bytes) {
-        try {
-            File file =new File(path);
-            if(!file.exists())
-                System.out.println("文件不存在！！！");
-            FileOutputStream fileOutputStream = new FileOutputStream(path);
-            fileOutputStream.write(bytes);
-            System.out.println("写入：" + bytes.length + "个字节");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void writeStrToFile (String path, String content) {
-        try {
-            byte[] bytes = content.getBytes("utf-8");
-            writeBytesFromFile(path, bytes);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static String getCurrentDir(String url){
-        if(url == null)
-            return null;
-        int index = url.lastIndexOf("/");
-        if (index < 0)
-            return url;
-        return url.substring(0, index + 1);
-    }
 }

@@ -1,5 +1,7 @@
 package sortUtil;
 
+import annotationAndReflect.PrintTime;
+
 import java.util.List;
 
 public class Sort {
@@ -109,39 +111,5 @@ public class Sort {
                 }
             }
         }
-    }
-
-    public static void printArray(int[] arr) {
-        int len = arr.length;
-        if (len < 100) {
-            System.out.print("------------------------------------");
-            for (int i : arr) {
-                System.out.print(i + "\t");
-            }
-            System.out.println("------------------------------------");
-            return;
-        }
-        int mount = len / 100;
-        System.out.print("------------------------------------");
-        for (int i=0; i<len; i+=mount) {
-            if (i % (10 * mount) == 0){
-                System.out.println();
-            }
-            System.out.print(arr[i] + "  \t");
-        }
-        System.out.println("\n------------------------------------");
-    }
-
-    public static void printArray(List<Integer> arr) {
-        int len = arr.size();
-        int mount = len / 100;
-        System.out.print("------------------------------------");
-        for (int i=0; i<len; i+=mount) {
-            if (i % (10 * mount) == 0){
-                System.out.println();
-            }
-            System.out.print(arr.get(i) + "  \t");
-        }
-        System.out.println("\n------------------------------------");
     }
 }

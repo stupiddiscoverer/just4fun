@@ -54,7 +54,7 @@ public class VideoSpider {
 
     private void parseVideoLinkInPage(Request request) {
         Page page = Utilities.downloadPage(request);
-        String html = Utilities.getHtmlText(page);
+        String html = page.getRawText();
         if (StringUtils.isEmpty(html)) {
             return;
         }
@@ -82,7 +82,7 @@ public class VideoSpider {
                 if (page == null) {
                     continue;
                 }
-                html = Utilities.getHtmlText(page);
+                html = page.getRawText();
                 if (StringUtils.isEmpty(html)) {
                     continue;
                 }

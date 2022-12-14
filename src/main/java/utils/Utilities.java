@@ -507,21 +507,6 @@ public class Utilities {
         return keyValues;
     }
 
-    public static String getHtmlText(Page page) {
-        try {
-            if (page == null) {
-                return null;
-            }
-            Html html = page.getHtml();
-            if (html == null) {
-                return null;
-            }
-            return html.get();
-        } catch (Exception ignore) {
-            return null;
-        }
-    }
-
     public static void buildVideoPath(byte[] bytes, String fileName) {
         fileName = fileName.trim().replace("\t", "")
                 .replace("\r", "").replace("\n", "")
@@ -575,19 +560,4 @@ public class Utilities {
                 .replace("&divide;", "÷").replace("&yen;", "¥");
     }
 
-    public static String getContentType(Page page) {
-        try {
-            Map<String, List<String>> headers = page.getHeaders();
-            for (Map.Entry<String, List<String>> entry: headers.entrySet()) {
-                if (entry.getKey().equalsIgnoreCase("content-type")) {
-                    List<String> list = entry.getValue();
-                    String type = list.get(0);
-                    return type;
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("getContentType()失败");
-        }
-        return "";
-    }
 }

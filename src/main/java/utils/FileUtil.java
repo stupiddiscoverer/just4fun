@@ -29,6 +29,10 @@ public class FileUtil {
             return;
         }
         try {
+            File dir = new File(getCurrentDir(fileName));
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
             File file = new File(fileName);
             if (!file.exists()) {
                 file.createNewFile();
@@ -36,10 +40,10 @@ public class FileUtil {
             FileOutputStream os = new FileOutputStream(file,false);
             os.write(bytes);
             os.close();
+            System.out.println("写入byte成功" + fileName);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("写入byte失败" + fileName);
         }
-        System.out.println("写入成功" + fileName);
     }
 
     public static void writeStrToFile (String path, String content, boolean append) {
@@ -59,9 +63,9 @@ public class FileUtil {
             FileWriter fileWriter = new FileWriter(path, append);
             fileWriter.write(content);
             fileWriter.close();
-            System.out.println("写入成功");
+            System.out.println("写入string成功" + path);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("写入string失败" + path);
         }
     }
 

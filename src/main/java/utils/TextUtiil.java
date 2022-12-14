@@ -1,11 +1,15 @@
 package utils;
 
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
 import org.apache.commons.codec.binary.Base64;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static utils.FileUtil.readStrFromFile;
 import static utils.FileUtil.writeStrToFile;
@@ -30,6 +34,15 @@ public class TextUtiil {
         if (index < 0)
             return url;
         return url.substring(0, index + 1);
+    }
+
+    public static boolean isContain(String[] strings, String s) {
+        for (String s1 : strings) {
+            if (s1.equals(s)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static boolean base64StrToBi(String path){
@@ -240,6 +253,22 @@ public class TextUtiil {
     public static void printArray(String[] strings) {
         for (String s : strings)
             System.out.println(s);
+    }
+
+    public static<T> void printArray(List<T> arr) {
+        int len = arr.size();
+        int mount = len / 100;
+        if (mount == 0) {
+            mount = 1;
+        }
+        System.out.print("------------------------------------");
+        for (int i=0; i<len; i+=mount) {
+            if (i % (10 * mount) == 0){
+                System.out.println();
+            }
+            System.out.print(arr.get(i) + "  \t");
+        }
+        System.out.println("\n------------------------------------");
     }
 
     public static void printArray (int[] array) {

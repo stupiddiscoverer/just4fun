@@ -5,6 +5,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import us.codecraft.webmagic.Page;
+import utils.CrawUtil;
 import utils.FileUtil;
 import utils.TextUtiil;
 import utils.Utilities;
@@ -45,7 +46,7 @@ public class DownSite extends Thread{
                     return;
                 System.out.println("下载 " + url + " 成功");
                 content = Utilities.cleanHtml(content);
-                String type = Utilities.getContentType(page);
+                String type = CrawUtil.getContentType(page);
                 if (type.contains("html")) {
                     Document document = Jsoup.parse(content);
                     completeUrl(document, "a", "href", url);

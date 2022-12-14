@@ -2,6 +2,8 @@ package test;
 
 import sortUtil.Sort;
 import sortUtil.ParaSort;
+import utils.TextUtiil;
+import utils.Utilities;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -41,9 +43,9 @@ public class Lambdas {
         System.out.println("归并排序耗时：" + (new Date().getTime() - time) + "毫秒");
 
 
-        Sort.printArray(arr);
-        Sort.printArray(array);
-        Sort.printArray(copy);
+        TextUtiil.printArray(arr);
+        TextUtiil.printArray(array);
+        TextUtiil.printArray(copy);
     }
 
     public static int[] getRandomArr(int len) {
