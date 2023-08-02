@@ -6,6 +6,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import questions.ParseGrammar;
 import sortUtil.Sort;
+import spider.SpiderRunner;
+import spider.VideoSpider;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.annotation.Annotation;
@@ -22,6 +24,9 @@ public class TestMain {
         System.out.println(name);
         String shit = line + "dddd";
         System.out.println(shit);
+        SpiderRunner runner = new SpiderRunner(2, 10);
+//        runner.run();
+        VideoSpider.downloadVideo("https://www.xiaobi111.com/get_file/3/d9e52e8129c7eac0dcd055fd8e974217/120000/120463/120463.mp4", "downloadFail.mp4");
     }
 
     public static <T> String getClassName(T object) {

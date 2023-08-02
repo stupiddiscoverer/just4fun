@@ -14,7 +14,7 @@ import utils.Utilities;
 
 public class VideoSpider {
     private int maxPage = 1350;
-    private static String HOST = "http://www.xiaobi060.com/";
+    private static String HOST = "https://www.xiaobi111.com/";
 
     public void download(int start, int end) {
         for (int i=start; i<=maxPage && i<end; i++) {
@@ -47,7 +47,7 @@ public class VideoSpider {
             return new Request(HOST);
         }
 
-        String url = "http://www.xiaobi060.com/latest-updates/%d/";
+        String url = HOST + "latest-updates/%d/";
         Request request = new Request(String.format(url, pageNo));
         return request;
     }
@@ -97,8 +97,8 @@ public class VideoSpider {
                 aTag = aTags.last();
                 String text = aTag.text().trim();
                 int size = Utilities.getNum(1, text);
-                if (size > 30) {
-                    System.out.println("文件超过30M， 跳过");
+                if (size > 100) {
+                    System.out.println("文件超过100M， 跳过");
                     continue;
                 }
 
@@ -111,7 +111,7 @@ public class VideoSpider {
         }
     }
 
-    private void downloadVideo(String url, String title) {
+    public static void downloadVideo(String url, String title) {
         try {
             System.out.println("downloading video: " + title);
             int index = url.indexOf("/?download=");

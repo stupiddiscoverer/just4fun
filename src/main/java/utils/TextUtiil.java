@@ -32,6 +32,8 @@ public class TextUtiil {
             return null;
         int index = url.lastIndexOf("/");
         if (index < 0)
+            index = url.lastIndexOf('\\');
+        if (index < 0)
             return url;
         return url.substring(0, index + 1);
     }

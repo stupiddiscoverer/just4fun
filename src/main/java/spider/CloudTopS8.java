@@ -9,7 +9,6 @@ import utils.FileUtil;
 import utils.TextUtiil;
 import utils.Utilities;
 
-import javax.swing.text.TabExpander;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -32,11 +31,13 @@ public class CloudTopS8 {
     }
 
     public static void main(String[] args) {
-//        getAllHeroes();
+        getAllHeroes();
         File file = new File(".");
         TextUtiil.printArray(file.list());
         String html = FileUtil.readStrFromFile("./src/main/java/spider/s8.txt");
-        System.out.println(html);
+        Document document = Jsoup.parse(html);
+        Elements elements = document.select(".overview-list > li");
+        System.out.println(elements.html());
     }
 
     private static void parseHeroAndRestrainFromWeb(String url, int price) {
@@ -94,7 +95,8 @@ public class CloudTopS8 {
         System.out.println(allRestrains.size());
         TextUtiil.printArray(allHeroes);
         TextUtiil.printArray(allRestrains);
-        print2DArray(heroRestrainMap);
+//        FileUtil.writeArrayToFile();
+//        print2DArray(heroRestrainMap);
     }
 
     private static String downloadHtml(String url) {

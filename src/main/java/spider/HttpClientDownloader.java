@@ -81,6 +81,9 @@ public class HttpClientDownloader extends AbstractDownloader {
             try {
                 httpResponse = httpClient.execute(requestContext.getHttpUriRequest(), requestContext.getHttpClientContext());
                 page = this.handleResponse(request, request.getCharset() != null ? request.getCharset() : task.getSite().getCharset(), httpResponse, task);
+                if (page == null) {
+                    return null;
+                }
                 this.onSuccess(request);
 //                this.logger.info("downloading page success {}", request.getUrl());
                 Page var8 = page;
@@ -112,7 +115,13 @@ public class HttpClientDownloader extends AbstractDownloader {
 
     protected Page handleResponse(Request request, String charset, HttpResponse httpResponse, Task task) throws IOException {
         Page page = new Page();
-        byte[] bytes = IOUtils.toByteArray(httpResponse.getEntity().getContent());
+        byte[] bytes;
+        try {
+            bytes = IOUtils.toByteArray(httpResponse.getEntity().getContent());
+        } catch (OutOfMemoryError e){
+            System.out.println("handleResponse got OutOfMemoryError " + e);
+            return null;
+        }
         String contentType = httpResponse.getEntity().getContentType() == null ? "" : httpResponse.getEntity().getContentType().getValue();
         page.setBytes(bytes);
         if (!request.isBinaryContent()) {
