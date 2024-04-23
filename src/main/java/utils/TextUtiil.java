@@ -27,6 +27,13 @@ public class TextUtiil {
         return parts[0] + "//" + parts[2];
     }
 
+    public static String parseHref(String html)
+    {
+        int index1 = html.indexOf("href=\"");
+        int index2 = html.indexOf("\"", index1 + "href=\"".length());
+        return html.substring(index1 + "href=\"".length(), index2);
+    }
+
     public static String getCurrentDir(String url){
         if(url == null)
             return null;

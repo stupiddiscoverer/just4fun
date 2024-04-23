@@ -6,7 +6,7 @@ public class AnyToAnySystem {
     public static void main(String[] args) {
 //        deciToOther(5613, 31);
 //        otherToDeci("12", 11);
-        anyToAny("1d", 14, 3);
+        System.out.println(anyToAny("1d", 14, 3));
         //161--255各种符合，，48--57 0-9，，33--47各种符合，，65--90 A-Z，，97--122 a-z，，91--96各种符合，，123--126各种符合
         //ascii码共有233个非空字符
         //而可辨认的字符只有上面的符合数字和字母共182个
