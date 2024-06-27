@@ -11,8 +11,5 @@
         <module name="just4fun" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="just4fun" target="8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
